@@ -67,7 +67,7 @@ theme(axis.text.x = element_text(colour = "grey20", size = 12, angle = 90, hjust
                         strip.text = element_text(face = "italic"),
                         text = element_text(size = 16))
 ```
-### Other plot 
+### Other plots
 ```
 .libPaths('~/schoenebeck_group/WENGANG/R_lib/')
 library(dplyr)
