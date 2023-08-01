@@ -1,7 +1,9 @@
 ### Aligning RNA-Seq reads on the modified RosCfam_1.0
 ```
+hisat2-build RosCfam_1.0.fasta RosCfam_1.0
+
 for sample_name in `cat samplelist`  ; do
-~/schoenebeck_group/WENGANG/WZ_software/fastp \
+fastp \
 -i ${sample_name}_1.fastq.gz \
 -I ${sample_name}_2.fastq.gz \
 -o ${sample_name}_1.clean.fq.gz \
@@ -9,7 +11,7 @@ for sample_name in `cat samplelist`  ; do
 -h ${sample_name}.html \
 -w 10
 
-hisat2 -q -x /home/s1874451/schoenebeck_group/WENGANG/YYYY/rnaseq/ref/GCF_014441545.1.modified -p 10\
+hisat2 -q -x RosCfam_1.0 -p 10\
  -1 ${sample_name}_1.clean.fq.gz -2 ${sample_name}_2.clean.fq.gz \
  -S ${sample_name}.sam 2> ${sample_name}.hisat2.log
 samtools sort -o ${sample_name}.sort.bam ${sample_name}.sam
@@ -47,8 +49,8 @@ tpm <- function(counts, lengths) {
 ```
 ### RNASEQ_chrY_TPM_by_class.tiff (headmap)
 ```
-test_tpm=read.table("K:\\schoenebeck_group\\WZ\\dropbox\\counts.s2_tpm.txt",head=T)
-condition=read.table("K:\\schoenebeck_group\\WZ\\dropbox\\sample.condition1",head=F)
+test_tpm=read.table("counts.s2_tpm.txt",head=T)
+condition=read.table("sample.condition1",head=F)
 test_tpm=test_tpm[c(36610:36645),]
 test_tpm=as.matrix(test_tpm[,-c(1:6)])
 samples=data.frame(V1=colnames(test_tpm))
