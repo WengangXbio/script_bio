@@ -37,4 +37,11 @@ perl gc_content.pl --fasta genome.fasta --window 1000 --step 100
 ```
 perl EDTA.pl --genome ref.fa --species others --step all
 ```
-
+### box plot by "ggpubr" package
+```
+library(ggpubr)
+df=read.table("xxx",head=T,sep="\t")
+ggboxplot(df, x = "Type", y = "values",color = "Type", palette = "jco", facet.by = "Comp",add = "jitter",size = 1)+  
+rotate_x_text(angle = 45)+
+stat_compare_means(comparisons = my_comparisons)+ stat_compare_means(label.y =1.1)
+```
