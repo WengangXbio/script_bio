@@ -16,6 +16,10 @@ wtdbg2.pl -t 16 -x rs -g 2500m -o ./wtdbg2_assembly pacbio_subreads.fa
 ```
 merge_wrapper.py falcon_assembly.fasta flye_assembly.fasta
 ```
+## Minimap2 alignment for genome-to-genome
+```
+minimap2 -cx asm5 ref1.fa ref2.fa > aln.paf 
+```
 ## Genome assessment
 
 ### K-mer (merqury)
